@@ -13,7 +13,32 @@ class Myapp extends StatefulWidget {
   _MyappState createState() => _MyappState();
 }
 
-class _MyappState extends State<Myapp> {  
+class _MyappState extends State<Myapp> {
+
+  TextEditingController nama = new TextEditingController();
+  TextEditingController alamat = new TextEditingController();
+  TextEditingController semester = new TextEditingController();
+
+  void _kirimdata(){
+    AlertDialog alertDialog = new AlertDialog(
+      content: new Container(
+        height: 200.0,
+        child: new Column(
+          children: <Widget>[
+            new Text("Nama Lengkap : ${alamat.text}"),
+            new Text("Alamat : ${alamat.text}"),
+            new Text("Semester : ${semester.text}"),
+            RaisedButton(
+              child: new Text("OK"),
+              onPressed: ()=>Navigator.pop(context),
+            )
+          ],
+        ),
+      ),
+    );
+    showDialog(context: context, child: alertDialog);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +52,8 @@ class _MyappState extends State<Myapp> {
             Padding(
               padding: EdgeInsets.only(top: 10, bottom: 10),
                child: TextField(
-                decoration: new InputDecoration(
+                 controller: nama,
+                  decoration: new InputDecoration(
                   hintText: "Nama Lengkap", 
                   labelText: "Nama Mahasiswa", 
                   icon: Icon(Icons.people), 
@@ -35,13 +61,14 @@ class _MyappState extends State<Myapp> {
                     borderRadius: new BorderRadius.circular(10.0)
                   ),
                 ),
-                keyboardType: TextInputType.text,
+                keyboardType: TextInputType.numberWithOptions(),
               ),
             ),
             
             Padding(
                 padding: EdgeInsets.only(top: 10, bottom: 10),
                 child: TextField(
+                controller: alamat,
                 decoration: new InputDecoration(
                   hintText: "Alamat Lengkap", 
                   labelText: "Alamat", 
@@ -57,7 +84,8 @@ class _MyappState extends State<Myapp> {
             Padding(
                 padding: EdgeInsets.only(top: 10, bottom: 10),
                 child: TextField(
-                decoration: new InputDecoration(
+                  controller: semester,
+                  decoration: new InputDecoration(
                   hintText: "Semester", 
                   labelText: "Semester Kuliah", 
                   icon: Icon(Icons.event_seat), 
@@ -75,7 +103,9 @@ class _MyappState extends State<Myapp> {
                 style: TextStyle(color: Colors.white),
               ),
               color: Colors.blue,
-              onPressed: (){},
+              onPressed: () {
+                _kirimdata();
+              },
             ),
           ],
         ),
