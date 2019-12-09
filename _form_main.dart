@@ -14,10 +14,6 @@ class Myapp extends StatefulWidget {
 }
 
 class _MyappState extends State<Myapp> {
-
-  TextEditingController controllernama = new TextEditingController();
-  TextEditingController controlleralamat = new TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,6 +68,7 @@ class _MyappState extends State<Myapp> {
                 keyboardType: TextInputType.number,
               ),
             ),
+
             RaisedButton(
               child: Text(
                 "Submit",
