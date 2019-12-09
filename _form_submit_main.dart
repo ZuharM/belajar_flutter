@@ -25,7 +25,7 @@ class _MyappState extends State<Myapp> {
         height: 200.0,
         child: new Column(
           children: <Widget>[
-            new Text("Nama Lengkap : ${alamat.text}"),
+            new Text("Nama Lengkap : ${nama.text}"),
             new Text("Alamat : ${alamat.text}"),
             new Text("Semester : ${semester.text}"),
             RaisedButton(
@@ -61,7 +61,7 @@ class _MyappState extends State<Myapp> {
                     borderRadius: new BorderRadius.circular(10.0)
                   ),
                 ),
-                keyboardType: TextInputType.numberWithOptions(),
+                keyboardType: TextInputType.text,
               ),
             ),
             
